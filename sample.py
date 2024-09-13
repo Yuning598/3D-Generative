@@ -133,7 +133,7 @@ def data_exists(data, prevs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('config', type=str)
+    parser.add_argument('--config', type=str, default='./configs/sample.yml')
     parser.add_argument('-i', '--data_id', type=int, default=0)
     parser.add_argument('--device', type=str, default='cuda')
     parser.add_argument('--outdir', type=str, default='./outputs')

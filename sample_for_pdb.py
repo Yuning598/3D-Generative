@@ -73,7 +73,7 @@ if __name__ == '__main__':
     parser.add_argument('--bbox_size', type=float, default=23.0, 
                         help='Pocket bounding box size')
     parser.add_argument('--config', type=str, default='./configs/sample_for_pdb.yml')
-    parser.add_argument('--device', type=str, default='cuda')
+    parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--outdir', type=str, default='./outputs')
     args = parser.parse_args()
 

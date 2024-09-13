@@ -115,12 +115,12 @@ dependencies:
   - python-lmdb=0.99
   - python-louvain=0.15
   - python_abi=3.8
-  - pytorch=1.10.1
+  - pytorch=2.0.1
   - pytorch-cluster=1.5.9
   - pytorch-mutex=1.0
   - pytorch-scatter=2.0.9
   - pytorch-sparse=0.6.12
-  - pytorch-spline-conv=1.2.1
+  - pytorch-spline-conv=1.2.2
   - pytz=2021.3
   - pyu2f=0.1.5
   - pyyaml=5.4.1

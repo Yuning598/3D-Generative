@@ -18,7 +18,8 @@ import torch_geometric.data.collate
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('config', type=str)
+    # parser.add_argument('config', type=str)
+    parser.add_argument('--config', type=str, default='./configs/train_main_model.yml')
     parser.add_argument('--device', type=str, default='cuda')
     parser.add_argument('--logdir', type=str, default='./logs')
     args = parser.parse_args()

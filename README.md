@@ -18,7 +18,7 @@
 The code has been tested in the following environment:
 
 | Package           | Version   |
-|-|-|
+| ----------------- | --------- |
 | Python            | 3.8.12    |
 | PyTorch           | 1.10.1    |
 | CUDA              | 11.3.1    |
@@ -28,12 +28,14 @@ The code has been tested in the following environment:
 | BioPython         | 1.79      |
 
 ### Install via Conda YML FIle (CUDA 11.3)
+
 ```bash
 conda env create -f env_cuda113.yml
 conda activate SBDD-3D
 ```
 
 ### Install Manually
+
 ```bash
 conda create --name SBDD-3D python=3.8
 conda activate SBDD-3D
@@ -46,6 +48,21 @@ conda install rdkit openbabel python-lmdb -c conda-forge
 conda install tensorboard -c conda-forge
 ```
 
+### Update env
+
+```bash
+pip install torch_scatter==2.0.9
+pip install torch_sparse==0.6.12
+pip install torch_cluster==1.5.9
+pip install torch_spline_conv==1.2.1
+pip install torch_geometric==2.0.4
+```
+
+
+```bash
+conda env update -f env_cuda113.yml
+```
+
 ## Datasets
 
 Please refer to [`README.md`](./data/README.md) in the `data` folder.
@@ -53,8 +70,10 @@ Please refer to [`README.md`](./data/README.md) in the `data` folder.
 ## Sampling
 
 ### Sampling for Pockets in the Testset
-To sample molecules for the i-th pocket in the testset, please first download the trained models following 
+
+To sample molecules for the i-th pocket in the testset, please first download the trained models following
 [`README.md`](./pretrained/README.md) in the `pretrained` folder. Then, run the following command:
+
 ```bash
 python sample.py ./configs/sample.yml --data_id {i}  # Replace {i} with the index of the data. i is between 0 and 99 for the testset.
 ```
@@ -64,19 +83,23 @@ python sample.py ./configs/sample.yml --data_id {i}  # Replace {i} with the inde
 To generate ligands for your own pocket, you need to provide the `PDB` structure file of the protein, the center coordinate of the pocket bounding box, and optionally the side length of the bounding box (default: 22Å).
 
 Example:
+
 ```bash
-python sample_for_pdb.py \
-    --pdb_path ./example/4yhj.pdb \
-    --center 32.0,28.0,36.0
+python sample_for_pdb.py --pdb_path ./example/4yhj.pdb -center "32.0,28.0,36.0"
 ```
 
 <img src="./assets/bounding_box.png" alt="bounding box" width="70%" />
 
 ## Training
 
-The open source repo of our latest work [Pocket2Mol: Efficient Molecular Sampling Based on 3D Protein Pockets](https://arxiv.org/abs/2205.07249) (ICML 2022) is tested for training. 
+The open source repo of our latest work [Pocket2Mol: Efficient Molecular Sampling Based on 3D Protein Pockets](https://arxiv.org/abs/2205.07249) (ICML 2022) is tested for training.
 You may check it out here: https://github.com/pengxingang/Pocket2Mol
 
+```bash
+python train.py ./configs/train_main_model.yml
+
+python train_frontier.py ./configs/train_frontier_model.yml
+```
 
 ## Citation
 
